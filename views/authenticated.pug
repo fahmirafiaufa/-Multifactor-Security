@@ -1,0 +1,48 @@
+extends layout.pug
+
+
+block content
+	center 
+		body(style="background-color: rgba(34,45,49,255);")
+			.container-fluid
+					.row.flex-nowrap
+						.col-auto.col-md-3.col-xl-2.px-sm-2.px-0(style="background-color: rgba(34,45,49,255);")
+							.d-flex.flex-column.align-items-center.align-items-sm-start.px-3.pt-2.text-white.min-vh-100
+								a(href="http://").d-flex.align-items-center.pb-3.mb-md-0.me-md-auto.text-white.text-decoration-none.bg-dark(style="padding: 0 10px") MAIN NAVIGATION
+								ul.nav.nav-pills.flex-column.mb-sm-auto.mb-0.align-items-center.align-items-sm-start#menu
+									li
+										a(href="http:#" style="color:rgba(184,199,201,255); font-size: 15px;").nav-link.py-4.align-middle.bi.bi-speedometer2 DASHBOARD
+									li
+										a(href="http:#" style="color:rgba(184,199,201,255); font-size: 15px;").nav-link.py-4.align-middle.bi.bi-folder-fill DATA KATEGORI
+									li
+										a(href="http:#" style="color:rgba(184,199,201,255); font-size: 15px;").nav-link.py-4.align-middle.bi.bi-folder-fill DATA TRANSAKSI
+									li
+										a(href="http:#" style="color:rgba(184,199,201,255); font-size: 15px;").nav-link.py-4.align-middle.bi.bi-building REKENING BANK											
+									li
+										a(href="http:#" style="color:rgba(184,199,201,255); font-size: 15px;").nav-link.py-4.align-middle.bi.bi-file-earmark-fill LAPORAN
+									li
+										a(href="http:#" style="color:rgba(184,199,201,255); font-size: 15px;").nav-link.py-4.align-middle.bi.bi-person-fill-lock GANTI PASSWORD
+									a(href=`/logout`).btn.btn-primary LOG OUT
+									
+						
+						.col-10(style="color: white; padding-top: 10px")
+							h3 Welcome #{userInfo.displayName} (Nasabah),
+							p.lead.mb-5 You have successfully authenticated with IBM Security Verify.
+							p Below is the information retrieved from the <code>userInfo</code> endpoint for the authenticated user.
+							table.table.table-bordered(style="text-align: left;")
+								thead.table-light
+									tr
+										th User claims
+										th Value
+								tbody
+									tbody
+									each val, key in userInfo
+										if key === 'ext'
+											tr(style="color: white;")
+												td tenantId
+												td= userInfo.ext.tenantId
+										else
+											tr(style="color: white;")
+												td= key
+												td= val
+							

@@ -1,0 +1,26 @@
+extends layout.pug
+
+block content 
+	center(style="background-color: rgba(34,45,49,255);")
+		.judul(style="color: white; padding: 5px 0;")
+			h3(style="font-weight: bold;") FINANCE REPORT
+			h4(style="font-weight: bold;") NGADIREJO VILLAGE
+		.container.col-6(style="background-color: white; border-radius: 3.5rem")
+			.container
+				
+				ul(style="font-size: 17px; padding-top: 2rem; margin-right: 2.1rem;")
+					li.list-group-item(style="background-color: rgba(34,45,49,255); color:white;") Copy the following code: <strong>#{userCode}</strong>
+					li.list-group-item(style="background-color: rgba(34,45,49,255); color:white;") Go to the following url #[a(href=verificationUri target='_blank') #{verificationUri}]
+		
+			if qrCode
+				.container.mt-5
+					.row
+						.col-md-12
+							p
+								strong Or scan the QR code below
+							img(src=`data:image;base64, ${qrCode}`)
+
+			.container.mt-5
+				.row
+					.col-md-12
+						p(style="font-weight: 470") Upon successful completion the user has authenticated and the device has been authorized. You can switch back to this tab to verify the authenticated users info.
